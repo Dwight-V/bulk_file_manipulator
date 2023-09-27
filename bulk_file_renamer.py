@@ -114,10 +114,7 @@ def rename(dirPath, repStr):
             os.rename(os.path.join(dirPath, file), os.path.join(dirPath, repStr + _return_existing_numbers(file) + _return_exetension(file)))
     else:
         for file in dir:
-            zeros = ""
-            for i in range(len(str(len(dir))) - len(str(count))):
-                zeros += "0"
-            os.rename(os.path.join(dirPath, file), os.path.join(dirPath, repStr + zeros + str(count) + _return_exetension(file)))
+            os.rename(os.path.join(dirPath, file), os.path.join(dirPath, repStr + str(count).zfill(len(str(len(dir)))) + _return_exetension(file)))
             count += 1
 
 
@@ -125,6 +122,6 @@ def rename(dirPath, repStr):
     
 
 # ----------------- Main ------------------------
-print("----- Renamer -----\n")
+print("----- Renamer v2 -----\n")
 rename(dirPath = prompt_path_to_dir(), repStr = prompt_replacement_string())
 
